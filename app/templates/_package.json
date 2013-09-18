@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "test": "grunt -v",
-    "postinstall": "bower install && grunt init"
+    "postinstall": "grunt init"
   },
   "license": "MIT",
   "dependencies": {
