@@ -83,6 +83,7 @@ WetBoewThemeGenerator.prototype.theme = function theme() {
 };
 
 WetBoewThemeGenerator.prototype.projectfiles = function projectfiles() {
+  this.copy('gitignore', '.gitignore');
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
   this.copy('bowerrc', '.bowerrc');
