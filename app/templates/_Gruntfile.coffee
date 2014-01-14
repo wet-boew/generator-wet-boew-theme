@@ -171,7 +171,6 @@ module.exports = ->
 					"!**/wet-boew.css"
 					"!**/ie8-wet-boew.css"
 					"!**/*.min.css"
-					"!**/ie8*.css"
 				]
 				ext: ".min.css"
 				dest: "dist/css"
