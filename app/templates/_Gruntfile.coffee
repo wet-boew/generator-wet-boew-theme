@@ -135,7 +135,7 @@ module.exports = ->
 			base:
 				expand: true
 				cwd: "src/sass"
-				src: "theme.scss"
+				src: "*theme.scss"
 				dest: "dist/unmin/css"
 				ext: ".css"
 
