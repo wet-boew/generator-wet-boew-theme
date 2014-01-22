@@ -87,4 +87,5 @@ WetBoewThemeGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
   this.copy('bowerrc', '.bowerrc');
+  this.copy('travis.yml', '.travis.yml');
 };
