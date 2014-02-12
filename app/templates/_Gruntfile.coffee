@@ -112,6 +112,8 @@ module.exports = ->
 					"!**/favicon*.*"
 					"!demos/**/*.*"
 					"!unmin/demos/**/*.*"
+					"!theme/**/*.*"
+					"!unmin/theme/**/*.*"
 					"!**/logo.*"
 				]
 				dest: "dist/"
