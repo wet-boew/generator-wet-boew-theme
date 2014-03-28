@@ -1,5 +1,5 @@
 #global module:false
-module.exports = ->
+module.exports = (grunt) ->
 
 	# Default task.
 	@registerTask(
