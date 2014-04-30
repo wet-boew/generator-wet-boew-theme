@@ -129,15 +129,15 @@ module.exports = (grunt) ->
 				dest: "dist/assets"
 			js:
 				expand: true
-				cwd: "src/js"
+				cwd: "src"
 				src: "**/*.js"
 				dest: "dist/unmin/js"
 
 		sass:
 			base:
 				expand: true
-				cwd: "src/sass"
-				src: "*theme.scss"
+				cwd: "src/"
+				src: "*.scss"
 				dest: "dist/unmin/css"
 				ext: ".css"
 
@@ -179,7 +179,7 @@ module.exports = (grunt) ->
 				options:
 					banner: "<%= banner %>"
 				expand: true
-				cwd: "src/js/"
+				cwd: "src/"
 				src: [
 					"<%= copy.js.src %>"
 				]
