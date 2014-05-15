@@ -17,72 +17,72 @@
 }
 
 /* Extra-small view and under */
-@media screen and (max-width: $screen-xs-max) {
+@media screen and (max-width: $xSmallViewMax) {
 	@import "views/screen-xs-max";
 }
 
 /* Small view and under */
-@media screen and (max-width: $screen-sm-max) {
+@media screen and (max-width: $smallViewMax) {
 	@import "views/screen-sm-max";
 }
 
 /* Medium view and under */
-@media screen and (max-width: $screen-md-max) {
+@media screen and (max-width: $mediumViewMax) {
 	@import "views/screen-md-max";
 }
 
 /* Large view and under */
-@media screen and (max-width: $screen-lg-max) {
+@media screen and (max-width: $largeViewMax) {
 	@import "views/screen-lg-max";
 }
 
 /* Extra-small view and over */
-@media screen and (min-width: $screen-xs-min) {
+@media screen and (min-width: $xSmallViewMin) {
 	@import "views/screen-xs-min";
 }
 
 /* Small view and over */
-@media screen and (min-width: $screen-sm-min) {
+@media screen and (min-width: $smallViewMin) {
 	@import "views/screen-sm-min";
 }
 
 /* Medium view and over */
-@media screen and (min-width: $screen-md-min) {
+@media screen and (min-width: $mediumViewMin) {
 	@import "views/screen-md-min";
 }
 
 /* Large view and over */
-@media screen and (min-width: $screen-lg-min) {
+@media screen and (min-width: $largeViewMin) {
 	@import "views/screen-lg-min";
 }
 
 /* Extra-extra-small view */
-@media screen and (max-width: $screen-xxs-max) {
+@media screen and (max-width: $xxSmallViewMax) {
 	@import "views/screen-xxs-max";
 }
 
 /* Extra-small view */
-@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+@media screen and (min-width: $xSmallViewMin) and (max-width: $xSmallViewMax) {
 	@import "views/screen-xs-min-to-screen-xs-max";
 }
 
 /* Small view */
-@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+@media screen and (min-width: $smallViewMin) and (max-width: $smallViewMax) {
 	@import "views/screen-sm-min-to-screen-sm-max";
 }
 
 /* Medium view */
-@media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+@media screen and (min-width: $mediumViewMin) and (max-width: $mediumViewMax) {
 	@import "views/screen-md-min-to-screen-md-max";
 }
 
 /* Large view */
-@media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+@media screen and (min-width: $largeViewMin) and (max-width: $largeViewMax) {
 	@import "views/screen-lg-min-to-screen-lg-max";
 }
 
 /* Extra-large view */
-@media screen and (min-width: $screen-xl-min) {
+@media screen and (min-width: $xLargeViewMin) {
 	@import "views/screen-xl-min";
 }
 
