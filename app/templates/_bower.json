@@ -8,13 +8,23 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "lib"
   ],
   "devDependencies": {
-	 "wet-boew": "git://github.com/wet-boew/wet-boew.git#v4.0"
+    "wet-boew": "4.0.1"
   },
   "resolutions": {
-    "jquery": ">= 1.9.0"
-  }
+    "jquery": "~2.1.0"
+  },
+  "description": "<%= _.slugify(themeName) %> - A theme for WET-BOEW",
+  "main": [
+    "src/theme.js",
+    "src/theme.scss"
+  ],
+  "keywords": [
+    "wet-boew",
+    "theme"
+  ]
 }
 
