@@ -1,6 +1,6 @@
 {
   "name": "<%= _.slugify(themeName) %>",
-  "version": "0.0.0",
+  "version": "<%= pkg.version %>",
   "scripts": {
     "test": "grunt",
     "postinstall": "bower update && cd lib/wet-boew && npm install"
