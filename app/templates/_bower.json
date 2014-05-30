@@ -1,6 +1,6 @@
 {
   "name": "<%= _.slugify(themeName) %>",
-  "version": "0.0.0",
+  "version": "<%= pkg.version %>",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -12,7 +12,7 @@
     "lib"
   ],
   "devDependencies": {
-    "wet-boew": "4.0.1"
+    "wet-boew": "<%= pkg.version %>"
   },
   "resolutions": {
     "jquery": "~2.1.0"

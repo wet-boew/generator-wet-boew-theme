@@ -1,6 +1,6 @@
 {
   "name": "generator-wet-boew-theme",
-  "version": "0.0.0",
+  "version": "4.0.2",
   "description": "A generator for Yeoman",
   "keywords": [
     "yeoman-generator"
@@ -23,7 +23,7 @@
     "mocha": "~1.12.0"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0-rc.1"
+    "yo": ">=1.1.2"
   },
   "engines": {
     "node": ">=0.8.0",
