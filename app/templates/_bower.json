@@ -14,9 +14,6 @@
   "devDependencies": {
     "wet-boew": "<%= pkg.version %>"
   },
-  "resolutions": {
-    "jquery": "~2.1.0"
-  },
   "description": "<%= _.slugify(themeName) %> - A theme for WET-BOEW",
   "main": [
     "src/theme.js",
