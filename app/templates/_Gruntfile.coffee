@@ -67,6 +67,7 @@ module.exports = (grunt) ->
 		[
 			"sass"
 			"autoprefixer"
+			"usebanner:css"
 			"cssmin"
 		]
 	)
@@ -142,7 +143,7 @@ module.exports = (grunt) ->
 				dest: "dist/unmin/js"
 
 		sass:
-			base:
+			all:
 				expand: true
 				cwd: "src/"
 				src: "*.scss"
@@ -153,29 +154,45 @@ module.exports = (grunt) ->
 			options:
 				browsers: [
 					"last 2 versions"
-					"ff >= 17"
-					"opera 12.1"
-					"bb >= 7"
 					"android >= 2.3"
+					"bb >= 7"
+					"ff >= 17"
 					"ie >= 8"
 					"ios 5"
+					"opera 12.1"
 				]
-			all:
+			modern:
 				cwd: "dist/unmin/css"
 				src: [
-					"*theme*.css"
+					"*.css"
+					"!ie8*.css"
 				]
 				dest: "dist/unmin/css"
 				expand: true
-				flatten: true
+			oldIE:
+				options:
+					browsers: [
+						"ie 8"
+					]
+				cwd: "dist/unmin/css"
+				src: [
+					"ie8*.css"
+				]
+				dest: "dist/unmin/css"
+				expand: true
+
+		usebanner:
+			css:
+				options:
+					banner: "@charset \"utf-8\";\n<%= banner %>"
+				files:
+					src: "dist/unmin/css/*.*"
 
 		cssmin:
 			dist:
-				options:
-					banner: "<%= banner %>"
 				cwd: "dist/unmin/css"
 				src: [
-					"*theme*.css"
+					"*.css"
 				]
 				ext: ".min.css"
 				dest: "dist/css"
@@ -329,6 +346,7 @@ module.exports = (grunt) ->
 			options:
 				cwd: "lib/wet-boew"
 				failOnError: false
+				isDevelopment: true
 
 		connect:
 			options:
@@ -337,18 +355,18 @@ module.exports = (grunt) ->
 			server:
 				options:
 					base: "dist"
-					middleware: (connect, options) ->
-						middlewares = []
-						middlewares.push(connect.compress(
+					middleware: (connect, options, middlewares) ->
+						middlewares.unshift(connect.compress(
 							filter: (req, res) ->
 								/json|text|javascript|dart|image\/svg\+xml|application\/x-font-ttf|application\/vnd\.ms-opentype|application\/vnd\.ms-fontobject/.test(res.getHeader('Content-Type'))
 						))
-						middlewares.push(connect.static(options.base));
+
 						middlewares
 
 	# These plugins provide necessary tasks.
 	@loadNpmTasks "assemble"
 	@loadNpmTasks "grunt-autoprefixer"
+	@loadNpmTasks "grunt-banner"
 	@loadNpmTasks "grunt-check-dependencies"
 	@loadNpmTasks "grunt-contrib-clean"
 	@loadNpmTasks "grunt-contrib-connect"
