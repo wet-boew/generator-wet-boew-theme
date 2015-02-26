@@ -14,11 +14,10 @@ module.exports = (grunt) ->
 		"dist"
 		"Produces the production files"
 		[
-			"checkDependencies"
 			"build"
 			"assets-dist"
 			"assemble"
-			"htmlcompressor"
+			"htmlmin"
 		]
 	)
 
@@ -36,6 +35,7 @@ module.exports = (grunt) ->
 		"build"
 		"Produces unminified files"
 		[
+			"checkDependencies"
 			"clean:dist"
 			"copy:wetboew"
 			"assets"
@@ -330,10 +330,11 @@ module.exports = (grunt) ->
 						dest: "dist/demos"
 				]
 
-		htmlcompressor:
+		htmlmin:
 			options:
-				type: "html"
-				concurrentProcess: 5
+				collapseWhitespace: true
+				preserveLineBreaks: true
+				preventAttributesEscaping: true
 			all:
 				cwd: "dist"
 				src: [
@@ -370,7 +371,6 @@ module.exports = (grunt) ->
 							filter: (req, res) ->
 								/json|text|javascript|dart|image\/svg\+xml|application\/x-font-ttf|application\/vnd\.ms-opentype|application\/vnd\.ms-fontobject/.test(res.getHeader('Content-Type'))
 						))
-
 						middlewares
 
 	# These plugins provide necessary tasks.
@@ -383,13 +383,14 @@ module.exports = (grunt) ->
 	@loadNpmTasks "grunt-contrib-copy"
 	@loadNpmTasks "grunt-contrib-cssmin"
 	@loadNpmTasks "grunt-contrib-jshint"
+	@loadNpmTasks "grunt-contrib-htmlmin"
 	@loadNpmTasks "grunt-contrib-uglify"
 	@loadNpmTasks "grunt-contrib-watch"
 	@loadNpmTasks "grunt-cssmin-ie8-clean"
 	@loadNpmTasks "grunt-gh-pages"
-	@loadNpmTasks "grunt-htmlcompressor"
 	@loadNpmTasks "grunt-hub"
 	@loadNpmTasks "grunt-install-dependencies"
 	@loadNpmTasks "grunt-sass"
 
+	require( "time-grunt" )( grunt )
 	@
