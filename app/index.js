@@ -69,6 +69,7 @@ WetBoewThemeGenerator.prototype.theme = function theme() {
 	this.copy('src/_variables.scss', 'src/_variables.scss');
 	this.mkdir('src/views');
 	var includeFiles = [
+		'_base',
 		'_print',
 		'_screen',
 		'_screen-xl-min',
