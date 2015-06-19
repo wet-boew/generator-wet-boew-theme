@@ -64,8 +64,7 @@ WetBoewThemeGenerator.prototype.theme = function theme() {
 	this.copy('src/assets/logo.png', 'src/assets/logo.png');
 
 	this.copy('src/theme.scss', 'src/theme.scss');
-	this.copy('src/wet-boew.scss', 'src/wet-boew.scss');
-	this.copy('src/ie8-wet-boew.scss', 'src/ie8-wet-boew.scss');
+	this.copy('src/ie8-theme.scss', 'src/ie8-wet-boew.scss');
 	this.copy('src/_variables.scss', 'src/_variables.scss');
 	this.mkdir('src/views');
 	var includeFiles = [
