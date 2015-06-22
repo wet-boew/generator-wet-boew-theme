@@ -102,6 +102,8 @@ module.exports = (grunt) ->
 
 		# Metadata.
 		pkg: @file.readJSON("package.json")
+		jqueryVersion: grunt.file.readJSON("lib/jquery/bower.json")
+		jqueryOldIEVersion: grunt.file.readJSON("lib/jquery-oldIE/bower.json")
 		banner: "/*!\n * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)\n * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html\n" +
 				" * v<%= pkg.version %> - " + "<%= grunt.template.today('yyyy-mm-dd') %>\n *\n */"
 
@@ -242,6 +244,9 @@ module.exports = (grunt) ->
 				]
 				layoutdir: "site/layouts"
 				layout: "default.hbs"
+				environment:
+					jqueryVersion: "<%= jqueryVersion.version %>"
+					jqueryOldIEVersion: "<%= jqueryOldIEVersion.version %>"
 
 			demos:
 				options:
@@ -285,6 +290,8 @@ module.exports = (grunt) ->
 				options:
 					environment:
 						suffix: ".min"
+						jqueryVersion: "<%= jqueryVersion.version %>"
+						jqueryOldIEVersion: "<%= jqueryOldIEVersion.version %>"
 					assets: "dist"
 				files: [
 						#site
