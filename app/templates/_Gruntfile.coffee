@@ -17,6 +17,7 @@ module.exports = (grunt) ->
 			"build"
 			"assemble"
 			"htmlmin"
+			"useMinAssets"
 		]
 	)
 
@@ -26,7 +27,6 @@ module.exports = (grunt) ->
 		"Produces unminified files"
 		[
 			"build"
-			"assemble:demos"
 		]
 	)
 
@@ -87,6 +87,25 @@ module.exports = (grunt) ->
 			"copy:js"
 			"uglify"
 		]
+	)
+
+	@registerTask(
+		"useMinAssets"
+		"Replace unmin refrences with the min paths for HTML files"
+		() ->
+			htmlFiles = grunt.file.expand(
+				"dist/**/*.html"
+				"!dist/unmin/**/*.html"
+			);
+
+			htmlFiles.forEach(
+				( file ) ->
+					contents = grunt.file.read( file )
+					contents = contents.replace( /\.\.\/\//g, "./" )
+					contents = contents.replace( /\"(?!https:)([^\"]*)?\.(js|css)\"/g, "\"$1.min.$2\"" )
+
+					grunt.file.write(file, contents);
+			);
 	)
 
 	@initConfig
@@ -233,10 +252,9 @@ module.exports = (grunt) ->
 				environment:
 					jqueryVersion: "<%= jqueryVersion.version %>"
 					jqueryOldIEVersion: "<%= jqueryOldIEVersion.version %>"
+				assets: "dist/"
 
 			demos:
-				options:
-					assets: "dist/unmin"
 				files: [
 						#site
 						expand: true
@@ -272,67 +290,15 @@ module.exports = (grunt) ->
 						dest: "dist/unmin/demos"
 				]
 
-			demos_min:
-				options:
-					environment:
-						suffix: ".min"
-						jqueryVersion: "<%= jqueryVersion.version %>"
-						jqueryOldIEVersion: "<%= jqueryOldIEVersion.version %>"
-					assets: "dist"
-				files: [
-						#site
-						expand: true
-						cwd: "site/pages"
-						src: [
-							"*.hbs",
-							"!index.hbs"
-						]
-						dest: "dist"
-					,
-						#index
-						expand: true
-						cwd: "site/pages"
-						src: [
-							"index.hbs"
-						]
-						dest: "dist"
-					,
-						#plugins
-						expand: true
-						cwd: "lib/wet-boew/site/pages/demos"
-						src: [
-							"**/*.hbs"
-						]
-						dest: "dist/demos"
-					,
-						expand: true
-						cwd: "lib/wet-boew/src/plugins"
-						src: [
-							"**/*.hbs"
-						]
-						dest: "dist/demos"
-					,
-						expand: true
-						cwd: "lib/wet-boew/src/polyfills"
-						src: "**/*.hbs"
-						dest: "dist/demos"
-					,
-						expand: true
-						cwd: "lib/wet-boew/src/other"
-						src: "**/*.hbs"
-						dest: "dist/demos"
-				]
-
 		htmlmin:
 			options:
 				collapseWhitespace: true
 				preserveLineBreaks: true
 				preventAttributesEscaping: true
 			all:
-				cwd: "dist"
+				cwd: "dist/unmin"
 				src: [
 					"**/*.html"
-					"!unmin/**/*.html"
 				]
 				dest: "dist"
 				expand: true
